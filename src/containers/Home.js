@@ -17,22 +17,26 @@ const Home = ({ status }) => {
       );
     }
     return (
-      <div>
-        <h1>
-          Home status:
-          {' '}
-          {status}
-          <br />
-          (Not Connected)
-        </h1>
+      <div className="container">
+        <nav className="navbar">
+          <div className="menu-icon">
+            <div className="line line-1" />
+            <div className="line line-2" />
+            <div className="line line-3" />
+          </div>
+          <ul className="nav-list">
+            <li className="nav-item"><a href="/login" className="nav-link">Log in</a></li>
+            <li className="nav-item"><a href="/signup" className="nav-link">Sign Up</a></li>
+          </ul>
+        </nav>
       </div>
     );
   };
 
   return (
-    <div>
+    <>
       { renderHome() }
-    </div>
+    </>
   );
 };
 
