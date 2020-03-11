@@ -22,7 +22,6 @@ const Home = ({ status }) => {
           <div className="menu-icon">
             <div className="line line-1" />
             <div className="line line-2" />
-            <div className="line line-3" />
           </div>
           <ul className="nav-list">
             <li className="nav-item"><a href="/login" className="nav-link">Log in</a></li>
