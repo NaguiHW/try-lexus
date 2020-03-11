@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HomeNotLoggedIn from './HomeNotLoggedIn';
 
 const Home = ({ status }) => {
   const showMenu = () => {
@@ -26,19 +27,7 @@ const Home = ({ status }) => {
       );
     }
     return (
-      <div className="container">
-        <nav className="navbar">
-          <div className="menu-icon" onClick={showMenu} role="presentation">
-            <div className="line line-1" />
-            <div className="line line-2" />
-          </div>
-          <ul className="nav-list">
-            <li className="nav-item"><a href="/login" className="nav-link">Log in</a></li>
-            <li className="nav-item"><a href="/signup" className="nav-link">Sign Up</a></li>
-          </ul>
-        </nav>
-        <div className="main-text">EXPERIENCE THE LEXUS</div>
-      </div>
+      <HomeNotLoggedIn />
     );
   };
 

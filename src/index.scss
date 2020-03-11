@@ -73,9 +73,7 @@
         color: #262626;
         font-weight: bold;
         text-transform: uppercase;
-  
       }
-      
     }
   
     .active {
@@ -93,5 +91,25 @@
   text-shadow: 1px 1px #262626;
   font-size: 5rem;
   font-family: 'Exo 2', sans-serif;
-  padding-top: 45vh;
+  padding-top: 40vh;
+}
+
+.main-button-container {
+  margin: 15px;
+  
+  .main-button {
+    background-color: #97BF0F;
+    font-size: 16px;
+    text-decoration: none;
+    color: #eee;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 861px) {
+  .main-text {
+    font-size: 2.8rem;
+  }
 }
