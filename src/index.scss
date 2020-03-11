@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: url('./img/home.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.navbar {
+  width: 250px;
+  height: 100%;
+  background-color: #eee;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s;
+
+  .menu-icon {
+    width: 30px;
+    height: 23px;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    .line {
+      width: 100%;
+      height: 5px;
+      background-color: #eee;
+      border-radius: 3px;
+      transition: all 0.5s;
+    }
+
+    .change-1 {
+      transform: rotateZ(-45deg) translate(-8px);
+      background-color: #262626;
+    }
+
+    .change-2 {
+      transform: rotateZ(45deg) translate(-8px);
+      background-color: #262626;
+    }
+  }
+
+  .nav-list {
+    width: 100%;
+
+    .nav-item {
+      list-style: none;
+      margin: 25px 0 25px 35px;
+      padding: 10px 75px 10px 10px;
+    
+      .nav-link {
+        text-decoration: none;
+        font-size: 25px;
+        color: #262626;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+  
+    .active {
+      background-color: #97BF0F;
+    }
+  }
+}
+
+.move-left {
+  left: 0;
+}
+
+.main-text {
+  color: #eee;
+  text-shadow: 1px 1px #262626;
+  font-size: 5rem;
+  font-family: 'Exo 2', sans-serif;
+  padding-top: 40vh;
+}
+
+.main-button-container {
+  margin: 15px;
+  
+  .main-button {
+    background-color: #97BF0F;
+    font-size: 16px;
+    text-decoration: none;
+    color: #eee;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 861px) {
+  .main-text {
+    font-size: 2.8rem;
+  }
+}
