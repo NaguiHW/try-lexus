@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { CREATE_ACCOUNT } from '../actions';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -18,12 +21,18 @@ class SignupForm extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const { createAccount } = this.props;
+    createAccount(this.state);
+  }
+
   render() {
     const {
       firstName, lastName, email, password, passwordConfirmation,
     } = this.state;
     return (
-      <form className="login-form">
+      <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
         <input type="text" placeholder="First Name" name="firstName" value={firstName} onChange={this.handleChange.bind(this)} />
         <br />
         <input type="text" placeholder="Last Name" name="lastName" value={lastName} onChange={this.handleChange.bind(this)} />
@@ -40,4 +49,12 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+SignupForm.propTypes = {
+  createAccount: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  createAccount: userData => dispatch(CREATE_ACCOUNT(userData)),
+});
+
+export default connect(null, mapDispatchToProps)(SignupForm);
