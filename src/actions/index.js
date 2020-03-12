@@ -8,9 +8,11 @@ export const CHECK_STATUS = () => dispatch => {
       } else if (!response.data.logged_in) {
         dispatch({ type: 'LOGGED_OUT', response });
       }
+      console.log(response);
     })
     .catch(error => {
       dispatch({ type: 'LOGGED_IN_ERROR', error });
+      console.log(error);
     });
 };
 

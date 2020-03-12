@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LOGIN } from '../actions/index';
 
@@ -17,10 +18,16 @@ class LoginForm extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const { login } = this.props;
+    login(this.state);
+  }
+
   render() {
     const { email, password } = this.state;
     return (
-      <form className="login-form">
+      <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
         <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange.bind(this)} />
         <br />
         <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange.bind(this)} />
@@ -30,6 +37,10 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => ({
   login: userData => dispatch(LOGIN(userData)),
