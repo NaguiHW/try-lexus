@@ -1,12 +1,31 @@
 import Axios from 'axios';
 
-// eslint-disable-next-line import/prefer-default-export
 export const CHECK_STATUS = () => dispatch => {
-  Axios.get('http://localhost:3000', { withCredentials: true })
+  Axios.get('http://localhost:3000/logged_in', { withCredentials: true })
     .then(response => {
-      console.log(response);
+      if (response.data.logged_in) {
+        dispatch({ type: 'LOGGED_IN', payload: response });
+      } else if (!response.data.logged_in) {
+        dispatch({ type: 'LOGGED_OUT', response });
+      }
     })
     .catch(error => {
-      console.log(error);
+      dispatch({ type: 'LOGGED_IN_ERROR', error });
+    });
+};
+
+export const LOGIN = userData => dispatch => {
+  const user = {
+    email: userData.email,
+    password: userData.password,
+  };
+  Axios.post('http://localhost:3000/sessions', { user }, { withCredentials: true })
+    .then(response => {
+      if (response.data.logged_in) {
+        dispatch({ type: 'LOGGED_IN', payload: response });
+      }
+    })
+    .catch(error => {
+      dispatch({ type: 'LOGGED_IN_ERROR', error });
     });
 };

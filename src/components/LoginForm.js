@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { LOGIN } from '../actions/index';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -29,4 +31,8 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = dispatch => ({
+  login: userData => dispatch(LOGIN(userData)),
+});
+
+export default connect(null, mapDispatchToProps)(LoginForm);

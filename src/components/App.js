@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import Home from '../containers/Home';
 import Login from '../containers/Login';
 import Signup from '../containers/Signup';
+import { CHECK_STATUS } from '../actions';
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props.status);
+    const { checkStatus } = this.props;
+    checkStatus();
   }
 
   render() {
@@ -27,10 +29,15 @@ class App extends Component {
 
 App.propTypes = {
   status: PropTypes.string.isRequired,
+  checkStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   status: state.user.status,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  checkStatus: () => dispatch(CHECK_STATUS()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
