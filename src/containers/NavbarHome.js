@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './NavbarHome.scss';
 
-const NavbarHome = () => {
+const NavbarHome = ({
+  text1, text2, path1, path2,
+}) => {
   const showMenu = () => {
     const navbar = document.getElementsByClassName('navbar');
     const line1 = document.getElementsByClassName('line-1');
@@ -18,11 +21,18 @@ const NavbarHome = () => {
         <div className="line line-2" />
       </div>
       <ul className="nav-list">
-        <li className="nav-item"><a href="/login" className="nav-link">Log in</a></li>
-        <li className="nav-item"><a href="/signup" className="nav-link">Sign Up</a></li>
+        <li className="nav-item"><a href={path1} className="nav-link">{text1}</a></li>
+        <li className="nav-item"><a href={path2} className="nav-link">{text2}</a></li>
       </ul>
     </nav>
   );
+};
+
+NavbarHome.propTypes = {
+  text1: PropTypes.string.isRequired,
+  text2: PropTypes.string.isRequired,
+  path1: PropTypes.string.isRequired,
+  path2: PropTypes.string.isRequired,
 };
 
 export default NavbarHome;

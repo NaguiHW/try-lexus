@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Home from '../containers/Home';
 import Login from '../containers/Login';
+import Signup from '../containers/Signup';
 
 class App extends Component {
   componentDidMount() {
@@ -16,7 +17,8 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" render={() => <Home status={status} />} />
-          <Route path="/login" render={() => <Login status={status} />} />
+          <Route path="/login" render={() => <Login />} />
+          <Route path="/signup" render={() => <Signup />} />
         </Switch>
       </Router>
     );

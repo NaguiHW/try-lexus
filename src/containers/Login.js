@@ -5,7 +5,7 @@ import './Login.scss';
 
 const Login = () => (
   <div className="container-2">
-    <NavbarHome />
+    <NavbarHome text1="Home" path1="/" text2="Sign Up" path2="/signup" />
     <LoginForm />
   </div>
 );
