@@ -10,7 +10,7 @@ export const CHECK_STATUS = () => dispatch => {
       }
     })
     .catch(error => {
-      dispatch({ type: 'LOGGED_IN_ERROR', error });
+      dispatch({ type: 'USER_ERROR', error });
     });
 };
 
@@ -23,10 +23,12 @@ export const LOGIN = userData => dispatch => {
     .then(response => {
       if (response.data.logged_in) {
         dispatch({ type: 'LOGGED_IN', payload: response });
+      } else {
+        dispatch({ type: 'LOGIN_ERROR' });
       }
     })
     .catch(error => {
-      dispatch({ type: 'LOGGED_IN_ERROR', error });
+      dispatch({ type: 'USER_ERROR', error });
     });
 };
 
@@ -36,7 +38,7 @@ export const LOGOUT = () => dispatch => {
       dispatch({ type: 'LOGGED_OUT', response });
     })
     .catch(error => {
-      dispatch({ type: 'LOGGED_OUT_ERROR', error });
+      dispatch({ type: 'USER_ERROR', error });
     });
 };
 
@@ -55,6 +57,10 @@ export const CREATE_ACCOUNT = userData => dispatch => {
       }
     })
     .catch(error => {
-      console.log("Error: ", error);
+      dispatch({ type: 'CREATE_ACCOUNT_ERROR', error });
     });
 };
+
+export const RESET_ERROR = () => ({
+  type: 'RESET_ERROR',
+});

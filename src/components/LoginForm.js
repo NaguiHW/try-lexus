@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { LOGIN } from '../actions/index';
+import { LOGIN, RESET_ERROR } from '../actions/index';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -10,6 +10,15 @@ class LoginForm extends Component {
       email: '',
       password: '',
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const { errorMessage, resetError } = this.props;
+    if (prevProps.errorMessage !== errorMessage) {
+      const message = document.getElementsByClassName('error-message');
+      message[0].innerHTML = errorMessage;
+      setTimeout(() => resetError(), 3000);
+    }
   }
 
   handleChange(e) {
@@ -27,23 +36,33 @@ class LoginForm extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
-        <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange.bind(this)} />
-        <br />
-        <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange.bind(this)} />
-        <br />
-        <button type="submit">Log In</button>
-      </form>
+      <div>
+        <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
+          <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange.bind(this)} />
+          <br />
+          <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange.bind(this)} />
+          <br />
+          <button type="submit">Log In</button>
+        </form>
+        <div className="error-message" />
+      </div>
     );
   }
 }
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  resetError: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = state => ({
+  errorMessage: state.user.errorMessage,
+});
 
 const mapDispatchToProps = dispatch => ({
   login: userData => dispatch(LOGIN(userData)),
+  resetError: () => dispatch(RESET_ERROR()),
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
