@@ -31,3 +31,13 @@ export const LOGIN = userData => dispatch => {
       dispatch({ type: 'LOGGED_IN_ERROR', error });
     });
 };
+
+export const LOGOUT = () => dispatch => {
+  Axios.delete('http://localhost:3000/logout', { withCredentials: true })
+    .then(response => {
+      dispatch({ type: 'LOGGED_OUT', response });
+    })
+    .catch(error => {
+      dispatch({ type: 'LOGGED_OUT_ERROR', error });
+    });
+};

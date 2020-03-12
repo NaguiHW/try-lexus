@@ -34,7 +34,7 @@ class SignupForm extends Component {
         <br />
         <input type="password" placeholder="Password Confirmation" name="passwordConfirmation" value={passwordConfirmation} onChange={this.handleChange.bind(this)} />
         <br />
-        <button type="submit">Log In</button>
+        <button type="submit">Create Account</button>
       </form>
     );
   }
