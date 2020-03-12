@@ -1,4 +1,5 @@
 import React from 'react';
+import './NavbarHome.scss';
 
 const NavbarHome = () => {
   const showMenu = () => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import NavbarHome from './NavbarHome';
+import './HomeNotLoggedIn.scss';
 
 const HomeNotLoggedIn = () => (
   <div className="container">

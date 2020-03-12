@@ -18,10 +18,10 @@ class LoginForm extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <form>
-        <input type="text" placeholder="Email" name="email" value={email} onClick={this.handleChange.bind(this)} />
+      <form className="login-form">
+        <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange.bind(this)} />
         <br />
-        <input type="password" placeholder="Password" name="password" value={password} onClick={this.handleChange.bind(this)} />
+        <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange.bind(this)} />
         <br />
         <button type="submit">Log In</button>
       </form>
