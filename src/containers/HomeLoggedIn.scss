@@ -1,0 +1,47 @@
+.container-4 {
+  background-color: #FFFFFF;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .side-menu {
+    width: 200px;
+    height: 100%;
+    border-right: 2px solid rgb(235, 235, 235);
+
+    .logo {
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 75%;
+      }
+    }
+
+    .menu {
+      height: 65%;
+
+      ul {
+        li {
+          list-style: none;
+          font-size: 16px;
+          font-weight: bold;
+          margin: 5px 0 5px 25px;
+          padding: 8px 0 8px 8px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .social-media {
+      height: 15%;
+    }
+  }
+}
+
+.selection {
+  color: white;
+  background-color: #97BF0F;
+}
