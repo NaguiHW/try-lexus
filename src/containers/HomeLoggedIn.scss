@@ -71,3 +71,71 @@
 .content {
   margin-left: 200px;
 }
+
+// Sedans Area
+.content {
+  .selection-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 120px 0 0px;
+    
+    .title {
+      font-size: 50px;
+      font-weight: bold;
+    }
+    
+    .subtitle {
+      color: #B1B1B1;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 5px;
+      padding-bottom: 20px;
+    }
+
+    .dots {
+      border-bottom: 3px dotted rgb(219, 219, 219);
+      width: 100px;
+    }
+  }
+
+  .selection-content {
+    margin: 25px auto 0;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .car {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto 5px;
+
+      img {
+        width: 80%;
+        align-self: center;
+      }
+
+      .car-name {
+        margin: 5px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .dots {
+        border-bottom: 3px dotted rgb(219, 219, 219);
+        width: 100px;
+        margin: 15px auto;
+      }
+
+      .car-description {
+        font-size: 10px;
+        color: rgb(177, 177, 177);
+        justify-content: center;
+      }
+    }
+
+  }
+}

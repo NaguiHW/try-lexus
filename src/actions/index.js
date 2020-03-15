@@ -64,3 +64,14 @@ export const CREATE_ACCOUNT = userData => dispatch => {
 export const RESET_ERROR = () => ({
   type: 'RESET_ERROR',
 });
+
+export const GET_CARS = type => dispatch => {
+  Axios.get(`http://localhost:3000/cars/${type}`)
+    .then(response => {
+      dispatch({ type: 'GET_CARS', payload: response.data.cars });
+      console.log(response.data.cars);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

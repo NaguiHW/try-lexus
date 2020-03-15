@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import lexusLogo from '../img/Lexus.svg';
 import './HomeLoggedIn.scss';
-import Sedan from '../components/Sedans';
-import All from '../components/All';
+import Cars from '../components/Cars';
 
 class HomeLoggedIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selection: 'SEDANS',
+      selection: 'SEDAN',
     };
     this.content = this.content.bind(this);
   }
 
   content() {
-    if (this.state.selection === 'SEDANS') {
-      return (
-        <Sedan />
-      );
-    } if (this.state.selection === 'SUVS') {
-      return (
-        <All />
-      );
-    }
+    const { selection } = this.state;
+    return (
+      <Cars type={selection} />
+    );
   }
 
   select(e) {
@@ -31,31 +26,30 @@ class HomeLoggedIn extends Component {
       parent.children[i].classList.remove('selection');
     }
     const item = e.target;
-    const content = document.getElementsByClassName('content')[0];
     item.classList.add('selection');
-    if (item.innerHTML === 'SEDANS') {
+    if (item.innerHTML === 'SEDAN') {
       this.setState({
-        selection: 'SEDANS',
+        selection: 'SEDAN',
       });
-    } else if (item.innerHTML === 'SUVS') {
+    } else if (item.innerHTML === 'SUV') {
       this.setState({
-        selection: 'SUVS',
+        selection: 'SUV',
       });
-    } else if (item.innerHTML === 'COUPES') {
+    } else if (item.innerHTML === 'COUPE') {
       this.setState({
-        selection: 'COUPES',
+        selection: 'COUPE',
       });
-    } else if (item.innerHTML === 'HYBRIDS') {
+    } else if (item.innerHTML === 'HYBRID') {
       this.setState({
-        selection: 'HYBRIDS',
+        selection: 'HYBRID',
       });
-    } else if (item.innerHTML === 'TEST DRIVES') {
+    } else if (item.innerHTML === 'TEST DRIVE') {
       this.setState({
-        selection: 'TEST DRIVES',
+        selection: 'TEST DRIVE',
       });
-    } else if (item.innerHTML === 'APPOINTMENTS') {
+    } else if (item.innerHTML === 'APPOINTMENT') {
       this.setState({
-        selection: 'APPOINTMENTS',
+        selection: 'APPOINTMENT',
       });
     }
   }
@@ -71,12 +65,12 @@ class HomeLoggedIn extends Component {
           <div className="menu">
             <nav>
               <ul>
-                <li onClick={this.select.bind(this)} role="presentation" className="selection">SEDANS</li>
-                <li onClick={this.select.bind(this)} role="presentation">SUVS</li>
-                <li onClick={this.select.bind(this)} role="presentation">COUPES</li>
-                <li onClick={this.select.bind(this)} role="presentation">HYBRIDS</li>
-                <li onClick={this.select.bind(this)} role="presentation">TEST DRIVES</li>
-                <li onClick={this.select.bind(this)} role="presentation">APPOINTMENTS</li>
+                <li onClick={this.select.bind(this)} role="presentation" className="selection">SEDAN</li>
+                <li onClick={this.select.bind(this)} role="presentation">SUV</li>
+                <li onClick={this.select.bind(this)} role="presentation">COUPE</li>
+                <li onClick={this.select.bind(this)} role="presentation">HYBRID</li>
+                <li onClick={this.select.bind(this)} role="presentation">TEST DRIVE</li>
+                <li onClick={this.select.bind(this)} role="presentation">APPOINTMENT</li>
               </ul>
             </nav>
           </div>
@@ -90,10 +84,14 @@ class HomeLoggedIn extends Component {
             <button type="button" onClick={() => logout()}>Log Out</button>
           </div>
         </div>
-        <div className="content">{this.content()}</div>
+        <div className="">{this.content()}</div>
       </div>
     );
   }
 }
+
+HomeLoggedIn.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
 
 export default HomeLoggedIn;
