@@ -68,12 +68,9 @@
   background-color: #97BF0F;
 }
 
-.content {
-  margin-left: 200px;
-}
-
 // Cars Area
 .content {
+  margin-left: 200px;
   .selection-head {
     display: flex;
     flex-direction: column;
@@ -160,6 +157,57 @@
         .fa-instagram {
           padding: 3px 4px;
         }
+      }
+    }
+  }
+}
+
+// Individual Car Area
+.individual-car {
+  margin-left: 200px;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+
+  .car-image {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .car-text-area {
+    width: 25%;
+    height: 75vh;
+    margin: 0 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .car-name {
+      font-size: 35px;
+      text-align: right;
+      margin: 10px 0 50px;
+    }
+
+    .price-area {
+      font-size: 12px;
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        .text {
+          text-align: right;
+        }
+      }
+
+      .back-color {
+        background-color: #E2E3E5;
       }
     }
   }

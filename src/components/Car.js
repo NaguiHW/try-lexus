@@ -29,9 +29,39 @@ class Car extends Component {
   render() {
     const { car } = this.state;
     return (
-      <div>
-        Car
-        {car.id}
+      <div className="individual-car">
+        <div className="car-image">
+          <img src={car.image} alt={car.name} />
+        </div>
+        <div className="car-text-area">
+          <div className="car-name">{car.name}</div>
+          <div className="price-area">
+            <div className="row back-color">
+              <div className="text">Due at Signing</div>
+              <div className="price-tex">{car.signing}</div>
+            </div>
+            <div className="row">
+              <div className="text">Monthly Fee</div>
+              <div className="price-text">{car.month_fee}</div>
+            </div>
+            <div className="row back-color">
+              <div className="text">Lease Cash</div>
+              <div className="price-text">{car.lease_cash}</div>
+            </div>
+            <div className="row">
+              <div className="text">Total payable</div>
+              <div className="price-text">{car.price}</div>
+            </div>
+            <div className="row back-color">
+              <div className="text">Duration</div>
+              <div className="price-text">
+                {car.months}
+                {' '}
+                Months
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
