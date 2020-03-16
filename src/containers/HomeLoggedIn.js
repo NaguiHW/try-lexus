@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import lexusLogo from '../img/Lexus.svg';
 import './HomeLoggedIn.scss';
 import Cars from '../components/Cars';
+import Car from '../components/Car';
 
 class HomeLoggedIn extends Component {
   constructor(props) {
@@ -11,12 +12,24 @@ class HomeLoggedIn extends Component {
       selection: 'SEDAN',
     };
     this.content = this.content.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler(e) {
+    this.setState({
+      selection: e.target.parentElement.id,
+    });
   }
 
   content() {
     const { selection } = this.state;
+    if (parseInt(selection, 10)) {
+      return (
+        <Car id={selection} />
+      );
+    }
     return (
-      <Cars type={selection} />
+      <Cars type={selection} handleClick={this.clickHandler} />
     );
   }
 

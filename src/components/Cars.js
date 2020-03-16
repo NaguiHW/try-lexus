@@ -30,7 +30,7 @@ class Cars extends Component {
   }
 
   render() {
-    const { type } = this.props;
+    const { type, handleClick } = this.props;
     const { cars } = this.state;
     return (
       <div className="content">
@@ -42,8 +42,8 @@ class Cars extends Component {
         <div className="selection-content">
           {
             cars.map(car => (
-              <div className="car" key={car.id}>
-                <img src={car.image} alt={car.name} />
+              <div className="car" key={car.id} id={car.id}>
+                <img src={car.image} alt={car.name} onClick={handleClick} role="presentation" />
                 <div className="car-name">{car.name}</div>
                 <div className="dots" />
                 <div className="car-description">{car.description}</div>
@@ -64,6 +64,7 @@ class Cars extends Component {
 Cars.propTypes = {
   type: PropTypes.string.isRequired,
   getCars: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   cars: PropTypes.oneOfType([PropTypes.any]).isRequired,
 };
 

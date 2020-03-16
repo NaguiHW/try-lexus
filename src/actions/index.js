@@ -71,6 +71,16 @@ export const GET_CARS = type => dispatch => {
       dispatch({ type: 'GET_CARS', payload: response.data.cars });
     })
     .catch(error => {
-      console.log(error);
+      dispatch({ type: 'GET_CAR_ERROR', error });
+    });
+};
+
+export const GET_CAR = id => dispatch => {
+  Axios.get(`http://localhost:3000/car/${id}`)
+    .then(response => {
+      dispatch({ type: 'GET_CAR', payload: response.data.car });
+    })
+    .catch(error => {
+      dispatch({ type: 'GET_CAR_ERROR', error });
     });
 };
