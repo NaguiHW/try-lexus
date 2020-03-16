@@ -72,14 +72,14 @@
   margin-left: 200px;
 }
 
-// Sedans Area
+// Cars Area
 .content {
   .selection-head {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 120px 0 0px;
+    margin: 100px 0 0;
     
     .title {
       font-size: 50px;
@@ -109,8 +109,9 @@
     .car {
       width: 200px;
       display: flex;
+      text-align: center;
       flex-direction: column;
-      margin: 0 auto 5px;
+      margin: 0 auto;
 
       img {
         width: 80%;
@@ -135,7 +136,29 @@
         color: rgb(177, 177, 177);
         justify-content: center;
       }
-    }
 
+      .social-media-area {
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        margin: 10px auto;
+
+        i {
+          margin: 0 5px;
+          color: rgb(219, 219, 219);
+          border: 2px solid rgb(219, 219, 219);
+          border-radius: 50%;
+          padding: 3px;
+        }
+
+        .fa-facebook-f {
+          padding: 3px 6px;
+        }
+
+        .fa-instagram {
+          padding: 3px 4px;
+        }
+      }
+    }
   }
 }

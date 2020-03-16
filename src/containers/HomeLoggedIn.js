@@ -69,7 +69,6 @@ class HomeLoggedIn extends Component {
                 <li onClick={this.select.bind(this)} role="presentation">SUV</li>
                 <li onClick={this.select.bind(this)} role="presentation">COUPE</li>
                 <li onClick={this.select.bind(this)} role="presentation">HYBRID</li>
-                <li onClick={this.select.bind(this)} role="presentation">TEST DRIVE</li>
                 <li onClick={this.select.bind(this)} role="presentation">APPOINTMENT</li>
               </ul>
             </nav>

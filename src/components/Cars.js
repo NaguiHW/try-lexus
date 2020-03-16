@@ -47,6 +47,11 @@ class Cars extends Component {
                 <div className="car-name">{car.name}</div>
                 <div className="dots" />
                 <div className="car-description">{car.description}</div>
+                <div className="social-media-area">
+                  <i className="fab fa-facebook-f" />
+                  <i className="fab fa-twitter" />
+                  <i className="fab fa-instagram" />
+                </div>
               </div>
             ))
           }
