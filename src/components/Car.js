@@ -26,6 +26,11 @@ class Car extends Component {
     }
   }
 
+  makeAppointment(e) {
+    const { handleClick } = this.props;
+    handleClick(e);
+  }
+
   render() {
     const { car } = this.state;
     return (
@@ -33,7 +38,7 @@ class Car extends Component {
         <div className="car-image">
           <img src={car.image} alt={car.name} />
         </div>
-        <div className="car-text-area">
+        <div className="car-info-area">
           <div className="car-name">{car.name}</div>
           <div className="price-area">
             <div className="row back-color">
@@ -54,13 +59,10 @@ class Car extends Component {
             </div>
             <div className="row back-color">
               <div className="text">Duration</div>
-              <div className="price-text">
-                {car.months}
-                {' '}
-                Months
-              </div>
+              <div className="price-text">{car.months}</div>
             </div>
           </div>
+          <button type="button" onClick={this.makeAppointment.bind(this)} id="CREATE-APPONITMETNT">Make an Appointment</button>
         </div>
       </div>
     );
@@ -70,6 +72,7 @@ class Car extends Component {
 Car.propTypes = {
   id: PropTypes.string.isRequired,
   getCar: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   car: PropTypes.oneOfType([PropTypes.any]).isRequired,
 };
 

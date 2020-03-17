@@ -4,6 +4,7 @@ import lexusLogo from '../img/Lexus.svg';
 import './HomeLoggedIn.scss';
 import Cars from '../components/Cars';
 import Car from '../components/Car';
+import AppointmentForm from '../components/AppointmentForm';
 
 class HomeLoggedIn extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class HomeLoggedIn extends Component {
     };
     this.content = this.content.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
+    this.makeAppointment = this.makeAppointment.bind(this);
   }
 
   clickHandler(e) {
@@ -21,11 +23,22 @@ class HomeLoggedIn extends Component {
     });
   }
 
+  makeAppointment(e) {
+    this.setState({
+      selection: e.target.id,
+    });
+  }
+
   content() {
     const { selection } = this.state;
     if (parseInt(selection, 10)) {
       return (
-        <Car id={selection} />
+        <Car id={selection} handleClick={this.makeAppointment} />
+      );
+    }
+    if (selection === 'CREATE-APPONITMETNT') {
+      return (
+        <AppointmentForm />
       );
     }
     return (

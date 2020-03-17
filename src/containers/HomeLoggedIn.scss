@@ -180,7 +180,7 @@
     }
   }
 
-  .car-text-area {
+  .car-info-area {
     width: 25%;
     height: 75vh;
     margin: 0 20px 0 0;
@@ -201,14 +201,24 @@
         display: flex;
         justify-content: space-between;
         padding: 5px 10px;
-        .text {
-          text-align: right;
-        }
       }
 
       .back-color {
         background-color: #E2E3E5;
       }
+    }
+
+    button {
+      background-color: #97BF0F;
+      font-size: 14px;
+      text-decoration: none;
+      color: #eee;
+      padding: 10px;
+      border-radius: 20px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin: 50px 0;
     }
   }
 }
