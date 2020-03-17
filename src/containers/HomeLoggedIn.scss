@@ -222,3 +222,14 @@
     }
   }
 }
+
+// Book an appointment styles
+
+.appointment-form {
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}

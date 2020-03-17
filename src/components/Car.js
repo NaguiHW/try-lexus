@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { GET_CAR } from '../actions';
+import { GET_CAR, ADD_DATA_APPOINTMENT } from '../actions';
 
 class Car extends Component {
   constructor(props) {
@@ -27,8 +27,11 @@ class Car extends Component {
   }
 
   makeAppointment(e) {
-    const { handleClick } = this.props;
+    const {
+      handleClick, addDataAppointment, user, car,
+    } = this.props;
     handleClick(e);
+    addDataAppointment(user, car[0]);
   }
 
   render() {
@@ -73,15 +76,19 @@ Car.propTypes = {
   id: PropTypes.string.isRequired,
   getCar: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
+  addDataAppointment: PropTypes.func.isRequired,
   car: PropTypes.oneOfType([PropTypes.any]).isRequired,
+  user: PropTypes.oneOfType([PropTypes.any]).isRequired,
 };
 
 const mapStateToProps = state => ({
   car: state.car.car,
+  user: state.user.user,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCar: type => dispatch(GET_CAR(type)),
+  addDataAppointment: (user, car) => dispatch(ADD_DATA_APPOINTMENT(user, car)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Car);

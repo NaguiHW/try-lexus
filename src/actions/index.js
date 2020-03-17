@@ -84,3 +84,19 @@ export const GET_CAR = id => dispatch => {
       dispatch({ type: 'GET_CAR_ERROR', error });
     });
 };
+
+export const ADD_DATA_APPOINTMENT = (user, car) => ({
+  type: 'ADD_DATA',
+  payload: { user, car },
+});
+
+export const BOOK_APPOINTMENT = bookData => dispatch => {
+  Axios.post('http://localhost:3000/appointments', bookData, { withCredentials: true })
+    .then(response => {
+      // dispatch({ type: 'BOOK_APPOINTMENT', response });
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
