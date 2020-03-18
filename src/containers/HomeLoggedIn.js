@@ -21,6 +21,7 @@ class HomeLoggedIn extends Component {
     this.addClassTo = this.addClassTo.bind(this);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   removeClassTo() {
     const menuList = document.getElementsByClassName('menu-list')[0];
     for (let i = 0; i < menuList.children.length; i += 1) {
@@ -28,6 +29,7 @@ class HomeLoggedIn extends Component {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   addClassTo(item) {
     item.classList.add('selection');
   }
