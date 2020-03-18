@@ -3,6 +3,7 @@ const initialState = {
   user_id: null,
   car_name: '',
   car_id: null,
+  last_appointment: {},
 };
 
 const appointment = (state = initialState, action) => {
@@ -13,6 +14,10 @@ const appointment = (state = initialState, action) => {
       user_id: action.payload.user.id,
       car_name: action.payload.car.name,
       car_id: action.payload.car.id,
+    };
+    case 'BOOK_APPOINTMENT': return {
+      ...state,
+      last_appointment: action.appointment,
     };
     default: return state;
   }

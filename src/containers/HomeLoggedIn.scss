@@ -232,4 +232,76 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: #96BF01;
+  color: white;
+
+  .book-test {
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin: 25px 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      span {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      input {
+        margin: 5px 0 20px;
+        width: 175px;
+      }
+
+      #name, #car-name {
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 15px;
+        color: white;
+        background-color: #97BF0F;
+        font-weight: bold;
+      }
+
+      #date {
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 15px;
+        background-color: #97BF0F;
+        color: white;
+      }
+
+      #cities {
+        width: 187px;
+        border: 1px solid white;
+        padding: 5px 20px 5px 5px;
+        border-radius: 10px;
+        font-size: 15px;
+        background-color: #97BF0F;
+        color: white;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 3px;
+      }
+    }
+
+    button {
+      border: none;
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      background-color: white;
+      color: #97BF0F;
+      margin: 25px 0;
+    }
+  }
 }

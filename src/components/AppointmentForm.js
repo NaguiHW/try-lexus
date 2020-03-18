@@ -42,8 +42,9 @@ class AppointmentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { bookAppointment } = this.props;
+    const { bookAppointment, handleClick } = this.props;
     bookAppointment(this.state);
+    handleClick();
   }
 
   render() {
@@ -51,28 +52,28 @@ class AppointmentForm extends Component {
     const { date, city } = this.state;
     return (
       <div className="appointment-form">
-        <div>BOOK A LEXUS TEST-DRIVE</div>
+        <div className="book-test">BOOK A LEXUS TEST-DRIVE</div>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label htmlFor="name">
-            User Name:
+            <span>User Name:</span>
             <br />
             <input type="text" disabled value={appointmentData.user_name} id="name" />
           </label>
           <br />
           <label htmlFor="car-name">
-            Selected Car:
+            <span>Selected Car:</span>
             <br />
             <input type="text" disabled value={appointmentData.car_name} id="car-name" />
           </label>
           <br />
           <label htmlFor="date">
-            Select a Date:
+            <span>Select a Date:</span>
             <br />
             <input type="date" id="date" onChange={this.handleChange.bind(this)} name="date" value={date} />
           </label>
           <br />
           <label htmlFor="city">
-            Select a City:
+            <span>Select a City:</span>
             <br />
             <select id="cities" onChange={this.handleChange.bind(this)} name="city" value={city}>
               {this.cities.map(city => (
@@ -91,6 +92,7 @@ class AppointmentForm extends Component {
 AppointmentForm.propTypes = {
   appointmentData: PropTypes.oneOfType([PropTypes.any]).isRequired,
   bookAppointment: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

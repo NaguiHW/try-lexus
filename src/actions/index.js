@@ -93,10 +93,6 @@ export const ADD_DATA_APPOINTMENT = (user, car) => ({
 export const BOOK_APPOINTMENT = bookData => dispatch => {
   Axios.post('http://localhost:3000/appointments', bookData, { withCredentials: true })
     .then(response => {
-      // dispatch({ type: 'BOOK_APPOINTMENT', response });
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
+      dispatch({ type: 'BOOK_APPOINTMENT', response });
     });
-}
+};

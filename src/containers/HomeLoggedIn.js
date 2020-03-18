@@ -15,6 +15,20 @@ class HomeLoggedIn extends Component {
     this.content = this.content.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.makeAppointment = this.makeAppointment.bind(this);
+    this.updateSelection = this.updateSelection.bind(this);
+    this.removeClassTo = this.removeClassTo.bind(this);
+    this.addClassTo = this.addClassTo.bind(this);
+  }
+
+  removeClassTo() {
+    const menuList = document.getElementsByClassName('menu-list')[0];
+    for (let i = 0; i < menuList.children.length; i += 1) {
+      menuList.children[i].classList.remove('selection');
+    }
+  }
+
+  addClassTo(item) {
+    item.classList.add('selection');
   }
 
   clickHandler(e) {
@@ -27,6 +41,15 @@ class HomeLoggedIn extends Component {
     this.setState({
       selection: e.target.id,
     });
+    this.removeClassTo();
+  }
+
+  updateSelection() {
+    this.setState({
+      selection: 'APPOINTMENTS',
+    });
+    this.removeClassTo();
+    this.addClassTo(document.getElementById('appointments'));
   }
 
   content() {
@@ -38,7 +61,7 @@ class HomeLoggedIn extends Component {
     }
     if (selection === 'CREATE-APPONITMETNT') {
       return (
-        <AppointmentForm />
+        <AppointmentForm handleClick={this.updateSelection} />
       );
     }
     return (
@@ -47,12 +70,9 @@ class HomeLoggedIn extends Component {
   }
 
   select(e) {
-    const parent = e.target.parentElement;
-    for (let i = 0; i < parent.children.length; i += 1) {
-      parent.children[i].classList.remove('selection');
-    }
+    this.removeClassTo();
     const item = e.target;
-    item.classList.add('selection');
+    this.addClassTo(item);
     if (item.innerHTML === 'SEDAN') {
       this.setState({
         selection: 'SEDAN',
@@ -73,9 +93,9 @@ class HomeLoggedIn extends Component {
       this.setState({
         selection: 'TEST DRIVE',
       });
-    } else if (item.innerHTML === 'APPOINTMENT') {
+    } else if (item.innerHTML === 'APPOINTMENTS') {
       this.setState({
-        selection: 'APPOINTMENT',
+        selection: 'APPOINTMENTS',
       });
     }
   }
@@ -90,12 +110,12 @@ class HomeLoggedIn extends Component {
           </div>
           <div className="menu">
             <nav>
-              <ul>
+              <ul className="menu-list">
                 <li onClick={this.select.bind(this)} role="presentation" className="selection">SEDAN</li>
                 <li onClick={this.select.bind(this)} role="presentation">SUV</li>
                 <li onClick={this.select.bind(this)} role="presentation">COUPE</li>
                 <li onClick={this.select.bind(this)} role="presentation">HYBRID</li>
-                <li onClick={this.select.bind(this)} role="presentation">APPOINTMENT</li>
+                <li onClick={this.select.bind(this)} role="presentation" id="appointments">APPOINTMENTS</li>
               </ul>
             </nav>
           </div>
