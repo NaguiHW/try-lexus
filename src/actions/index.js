@@ -64,3 +64,42 @@ export const CREATE_ACCOUNT = userData => dispatch => {
 export const RESET_ERROR = () => ({
   type: 'RESET_ERROR',
 });
+
+export const GET_CARS = type => dispatch => {
+  Axios.get(`http://localhost:3000/cars/${type}`)
+    .then(response => {
+      dispatch({ type: 'GET_CARS', payload: response.data.cars });
+    })
+    .catch(error => {
+      dispatch({ type: 'GET_CAR_ERROR', error });
+    });
+};
+
+export const GET_CAR = id => dispatch => {
+  Axios.get(`http://localhost:3000/car/${id}`)
+    .then(response => {
+      dispatch({ type: 'GET_CAR', payload: response.data.car });
+    })
+    .catch(error => {
+      dispatch({ type: 'GET_CAR_ERROR', error });
+    });
+};
+
+export const ADD_DATA_APPOINTMENT = (user, car) => ({
+  type: 'ADD_DATA',
+  payload: { user, car },
+});
+
+export const BOOK_APPOINTMENT = bookData => dispatch => {
+  Axios.post('http://localhost:3000/appointments', bookData, { withCredentials: true })
+    .then(response => {
+      dispatch({ type: 'BOOK_APPOINTMENT', response });
+    });
+};
+
+export const LOAD_APPOINTMENTS = id => dispatch => {
+  Axios.get(`http://localhost:3000/appointments/${id}`, { withCredentials: true })
+    .then(response => {
+      dispatch({ type: 'LOAD_APPOINTMENTS', payload: response.data.appointments });
+    });
+};

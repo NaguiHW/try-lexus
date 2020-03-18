@@ -1,0 +1,354 @@
+.container-4 {
+  background-color: #FFFFFF;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .side-menu {
+    width: 200px;
+    height: 100%;
+    border-right: 2px solid rgb(235, 235, 235);
+    position: fixed;
+
+    .logo {
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 75%;
+      }
+    }
+
+    .menu {
+      height: 65%;
+
+      ul {
+        li {
+          list-style: none;
+          font-size: 16px;
+          font-weight: bold;
+          margin: 5px 0 5px 25px;
+          padding: 8px 0 8px 8px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .social-media {
+      height: 15%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      i {
+        font-size: 20px;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      button {
+        background-color: #97BF0F;
+        font-size: 14px;
+        text-decoration: none;
+        color: #eee;
+        padding: 7px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        border: none;
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+.selection {
+  color: white;
+  background-color: #97BF0F;
+}
+
+// Cars Area
+.content {
+  margin-left: 200px;
+  .selection-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 0;
+    
+    .title {
+      font-size: 50px;
+      font-weight: bold;
+    }
+    
+    .subtitle {
+      color: #B1B1B1;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 5px;
+      padding-bottom: 20px;
+    }
+
+    .dots {
+      border-bottom: 3px dotted rgb(219, 219, 219);
+      width: 100px;
+    }
+  }
+
+  .selection-content {
+    margin: 25px auto 0;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .car {
+      width: 200px;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      margin: 0 auto;
+
+      img {
+        width: 80%;
+        align-self: center;
+        cursor: pointer;
+      }
+
+      .car-name {
+        margin: 5px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .dots {
+        border-bottom: 3px dotted rgb(219, 219, 219);
+        width: 100px;
+        margin: 15px auto;
+      }
+
+      .car-description {
+        font-size: 10px;
+        color: rgb(177, 177, 177);
+        justify-content: center;
+      }
+
+      .social-media-area {
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        margin: 10px auto;
+
+        i {
+          margin: 0 5px;
+          color: rgb(219, 219, 219);
+          border: 2px solid rgb(219, 219, 219);
+          border-radius: 50%;
+          padding: 3px;
+          cursor: pointer;
+        }
+
+        .fa-facebook-f {
+          padding: 3px 6px;
+        }
+
+        .fa-instagram {
+          padding: 3px 4px;
+        }
+      }
+    }
+  }
+}
+
+// Individual Car Area
+.individual-car {
+  margin-left: 200px;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+
+  .car-image {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .car-info-area {
+    width: 25%;
+    height: 75vh;
+    margin: 0 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .car-name {
+      font-size: 35px;
+      text-align: right;
+      margin: 10px 0 50px;
+    }
+
+    .price-area {
+      font-size: 12px;
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+      }
+
+      .back-color {
+        background-color: #E2E3E5;
+      }
+    }
+
+    button {
+      background-color: #97BF0F;
+      font-size: 14px;
+      text-decoration: none;
+      color: #eee;
+      padding: 10px;
+      border-radius: 20px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin: 50px 0;
+    }
+  }
+}
+
+// Book an appointment styles
+
+.appointment-form {
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #96BF01;
+  color: white;
+
+  .book-test {
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin: 25px 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      span {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      input {
+        margin: 5px 0 20px;
+        width: 175px;
+      }
+
+      #name, #car-name {
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 15px;
+        color: white;
+        background-color: #97BF0F;
+        font-weight: bold;
+      }
+
+      #date {
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 15px;
+        background-color: #97BF0F;
+        color: white;
+      }
+
+      #cities {
+        width: 187px;
+        border: 1px solid white;
+        padding: 5px 20px 5px 5px;
+        border-radius: 10px;
+        font-size: 15px;
+        background-color: #97BF0F;
+        color: white;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 3px;
+      }
+    }
+
+    button {
+      border: none;
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      background-color: white;
+      color: #97BF0F;
+      margin: 25px 0;
+    }
+  }
+}
+
+// Appontment
+.appointment-page {
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+
+  .title {
+    margin: 100px 0 25px;
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .dots {
+    border-bottom: 3px dotted rgb(219, 219, 219);
+    width: 100px;
+    margin: 0 auto 25px;
+  }
+
+  .all-appointments {
+    width: 75%;
+
+    .row-head {
+      display: flex;
+      justify-content: space-around;
+      background-color: #97BF0F;
+      color: white;
+    }
+
+    .row {
+      display: flex;
+      border: 1px solid #97BF0F;
+
+      .data {
+        width: 33%;
+        margin: 10px 0 10px 15px;
+      }
+    }
+
+    .message {
+      margin: 5px 0;
+      font-size: 12px;
+    }
+  }
+}
