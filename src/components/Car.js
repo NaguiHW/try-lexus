@@ -65,7 +65,7 @@ class Car extends Component {
               <div className="price-text">{car.months}</div>
             </div>
           </div>
-          <button type="button" onClick={this.makeAppointment.bind(this)} id="CREATE-APPONITMETNT">Make an Appointment</button>
+          <button type="button" onClick={this.makeAppointment.bind(this)} id="CREATE-APPONITMETNT">Book an Appointment</button>
         </div>
       </div>
     );

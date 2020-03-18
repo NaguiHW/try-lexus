@@ -5,6 +5,7 @@ import './HomeLoggedIn.scss';
 import Cars from '../components/Cars';
 import Car from '../components/Car';
 import AppointmentForm from '../components/AppointmentForm';
+import Appointments from '../components/Appointments';
 
 class HomeLoggedIn extends Component {
   constructor(props) {
@@ -62,6 +63,11 @@ class HomeLoggedIn extends Component {
     if (selection === 'CREATE-APPONITMETNT') {
       return (
         <AppointmentForm handleClick={this.updateSelection} />
+      );
+    }
+    if (selection === 'APPOINTMENTS') {
+      return (
+        <Appointments />
       );
     }
     return (

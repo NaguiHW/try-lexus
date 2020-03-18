@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BOOK_APPOINTMENT } from '../actions';
+import { BOOK_APPOINTMENT, LOAD_APPOINTMENTS } from '../actions';
 
 class AppointmentForm extends Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class AppointmentForm extends Component {
       car_id: null,
       date: '',
       city: 'Chorrera',
+      car_name: '',
     };
     this.cities = ['Chorrera', 'Colon', 'David', 'Panama', 'Santiago'];
   }
@@ -31,6 +32,7 @@ class AppointmentForm extends Component {
       user_id: appointmentData.user_id,
       car_id: appointmentData.car_id,
       date: `${year}-${month}-${day}`,
+      car_name: appointmentData.car_name,
     });
   }
 
@@ -42,9 +44,10 @@ class AppointmentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { bookAppointment, handleClick } = this.props;
+    const { bookAppointment, handleClick, loadAppointments } = this.props;
     bookAppointment(this.state);
     handleClick();
+    loadAppointments();
   }
 
   render() {
@@ -93,6 +96,7 @@ AppointmentForm.propTypes = {
   appointmentData: PropTypes.oneOfType([PropTypes.any]).isRequired,
   bookAppointment: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
+  loadAppointments: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -101,6 +105,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   bookAppointment: bookData => dispatch(BOOK_APPOINTMENT(bookData)),
+  loadAppointments: id => dispatch(LOAD_APPOINTMENTS(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentForm);

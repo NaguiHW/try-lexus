@@ -305,3 +305,50 @@
     }
   }
 }
+
+// Appontment
+.appointment-page {
+  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+
+  .title {
+    margin: 100px 0 25px;
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .dots {
+    border-bottom: 3px dotted rgb(219, 219, 219);
+    width: 100px;
+    margin: 0 auto 25px;
+  }
+
+  .all-appointments {
+    width: 75%;
+
+    .row-head {
+      display: flex;
+      justify-content: space-around;
+      background-color: #97BF0F;
+      color: white;
+    }
+
+    .row {
+      display: flex;
+      border: 1px solid #97BF0F;
+
+      .data {
+        width: 33%;
+        margin: 10px 0 10px 15px;
+      }
+    }
+
+    .message {
+      margin: 5px 0;
+      font-size: 12px;
+    }
+  }
+}

@@ -96,3 +96,10 @@ export const BOOK_APPOINTMENT = bookData => dispatch => {
       dispatch({ type: 'BOOK_APPOINTMENT', response });
     });
 };
+
+export const LOAD_APPOINTMENTS = id => dispatch => {
+  Axios.get(`http://localhost:3000/appointments/${id}`, { withCredentials: true })
+    .then(response => {
+      dispatch({ type: 'LOAD_APPOINTMENTS', payload: response.data.appointments });
+    });
+};
