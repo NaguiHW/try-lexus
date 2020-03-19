@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9750e4fba3e0a921a7b8ab3919c854aa",
+    "revision": "e4c1caf5904126339ea18b52c25cc526",
     "url": "/NaguiHW/try-lexus/tree/release/index.html"
   },
   {

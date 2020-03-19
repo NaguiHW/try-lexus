@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/NaguiHW/try-lexus/tree/release/precache-manifest.9ffab8c5c18959ef29c7eb29ee70af8b.js"
+  "/NaguiHW/try-lexus/tree/release/precache-manifest.19ff1fbd0f02f7be8b91b40e9194ecf3.js"
 );
 
 self.addEventListener('message', (event) => {
