@@ -44,10 +44,10 @@ class AppointmentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { bookAppointment, handleClick, loadAppointments } = this.props;
+    const { bookAppointment, handleClick } = this.props;
+    // eslint-disable-next-line camelcase
     bookAppointment(this.state);
     handleClick();
-    loadAppointments();
   }
 
   render() {
@@ -96,7 +96,6 @@ AppointmentForm.propTypes = {
   appointmentData: PropTypes.oneOfType([PropTypes.any]).isRequired,
   bookAppointment: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
-  loadAppointments: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
