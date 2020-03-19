@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 export const CHECK_STATUS = () => dispatch => {
-  Axios.get('http://sleepy-forest-50807.herokuapp.com/logged_in', { withCredentials: true })
+  Axios.get('http://localhost:3000/logged_in', { withCredentials: true })
     .then(response => {
       if (response.data.logged_in) {
         dispatch({ type: 'LOGGED_IN', payload: response });
@@ -19,7 +19,7 @@ export const LOGIN = userData => dispatch => {
     email: userData.email,
     password: userData.password,
   };
-  Axios.post('http://sleepy-forest-50807.herokuapp.com/sessions', { user }, { withCredentials: true })
+  Axios.post('http://localhost:3000/sessions', { user }, { withCredentials: true })
     .then(response => {
       if (response.data.logged_in) {
         dispatch({ type: 'LOGGED_IN', payload: response });
@@ -33,7 +33,7 @@ export const LOGIN = userData => dispatch => {
 };
 
 export const LOGOUT = () => dispatch => {
-  Axios.delete('http://sleepy-forest-50807.herokuapp.com/logout', { withCredentials: true })
+  Axios.delete('http://localhost:3000/logout', { withCredentials: true })
     .then(response => {
       dispatch({ type: 'LOGGED_OUT', response });
     })
@@ -50,7 +50,7 @@ export const CREATE_ACCOUNT = userData => dispatch => {
     password: userData.password,
     password_confirmation: userData.passwordConfirmation,
   };
-  Axios.post('http://sleepy-forest-50807.herokuapp.com/registrations', { user }, { withCredentials: true })
+  Axios.post('http://localhost:3000/registrations', { user }, { withCredentials: true })
     .then(response => {
       if (response.data.status === 'created') {
         dispatch({ type: 'LOGGED_IN', payload: response });
@@ -66,7 +66,7 @@ export const RESET_ERROR = () => ({
 });
 
 export const GET_CARS = type => dispatch => {
-  Axios.get(`http://sleepy-forest-50807.herokuapp.com/cars/${type}`)
+  Axios.get(`http://localhost:3000/cars/${type}`)
     .then(response => {
       dispatch({ type: 'GET_CARS', payload: response.data.cars });
     })
@@ -76,7 +76,7 @@ export const GET_CARS = type => dispatch => {
 };
 
 export const GET_CAR = id => dispatch => {
-  Axios.get(`http://sleepy-forest-50807.herokuapp.com/car/${id}`)
+  Axios.get(`http://localhost:3000/car/${id}`)
     .then(response => {
       dispatch({ type: 'GET_CAR', payload: response.data.car });
     })
@@ -91,14 +91,14 @@ export const ADD_DATA_APPOINTMENT = (user, car) => ({
 });
 
 export const BOOK_APPOINTMENT = bookData => dispatch => {
-  Axios.post('http://sleepy-forest-50807.herokuapp.com/appointments', bookData, { withCredentials: true })
+  Axios.post('http://localhost:3000/appointments', bookData, { withCredentials: true })
     .then(response => {
       dispatch({ type: 'BOOK_APPOINTMENT', response });
     });
 };
 
 export const LOAD_APPOINTMENTS = id => dispatch => {
-  Axios.get(`http://sleepy-forest-50807.herokuapp.com/appointments/${id}`, { withCredentials: true })
+  Axios.get(`http://localhost:3000/appointments/${id}`, { withCredentials: true })
     .then(response => {
       dispatch({ type: 'LOAD_APPOINTMENTS', payload: response.data.appointments });
     });
