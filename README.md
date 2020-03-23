@@ -5,7 +5,7 @@
 **[Kalib Hackin](https://github.com/NaguiHW)** - naguihw@gmail.com
 
 ## Live Demo
-Not available at this moment.
+https://try-lexus.web.app/
 
 ## Screenshots
 
