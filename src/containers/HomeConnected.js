@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import lexusLogo from '../img/Lexus.svg';
-import './HomeLoggedIn.scss';
-import Cars from '../components/Cars';
-import Car from '../components/Car';
-import AppointmentForm from '../components/AppointmentForm';
-import Appointments from '../components/Appointments';
+import Car from './Car';
+import Cars from './Cars';
+import AppointmentForm from './AppointmentForm';
+import Appointments from './Appointments';
+import SideMenu from '../components/SideMenu';
 
-class HomeLoggedIn extends Component {
+class HomeConnected extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selection: 'SEDAN',
     };
-    this.content = this.content.bind(this);
+    this.select = this.select.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.makeAppointment = this.makeAppointment.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
@@ -109,42 +108,18 @@ class HomeLoggedIn extends Component {
   }
 
   render() {
-    const { logout } = this.props;
+    const { logOutAction } = this.props;
     return (
       <div className="container-4">
-        <div className="side-menu">
-          <div className="logo">
-            <img src={lexusLogo} alt="Lexus" />
-          </div>
-          <div className="menu">
-            <nav>
-              <ul className="menu-list">
-                <li onClick={this.select.bind(this)} role="presentation" className="selection">SEDAN</li>
-                <li onClick={this.select.bind(this)} role="presentation">SUV</li>
-                <li onClick={this.select.bind(this)} role="presentation">COUPE</li>
-                <li onClick={this.select.bind(this)} role="presentation">HYBRID</li>
-                <li onClick={this.select.bind(this)} role="presentation" id="appointments">APPOINTMENTS</li>
-              </ul>
-            </nav>
-          </div>
-          <div className="social-media">
-            <div className="icons">
-              <i className="fab fa-twitter" />
-              <i className="fab fa-facebook-f" />
-              <i className="fab fa-google-plus-g" />
-              <i className="fab fa-pinterest-p" />
-            </div>
-            <button type="button" onClick={() => logout()}>Log Out</button>
-          </div>
-        </div>
+        <SideMenu handleSelection={this.select} handleClick={logOutAction} />
         <div className="">{this.content()}</div>
       </div>
     );
   }
 }
 
-HomeLoggedIn.propTypes = {
-  logout: PropTypes.func.isRequired,
+HomeConnected.propTypes = {
+  logOutAction: PropTypes.func.isRequired,
 };
 
-export default HomeLoggedIn;
+export default HomeConnected;

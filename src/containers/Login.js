@@ -1,30 +1,68 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import NavbarHome from './NavbarHome';
+import { connect } from 'react-redux';
+import { LOGIN, RESET_ERROR } from '../actions';
 import LoginForm from '../components/LoginForm';
-import './Login.scss';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentDidUpdate(prevProps) {
-    const { status, history } = this.props;
-    if (prevProps.status !== status) {
-      history.push('/');
+    const { errorMessage, resetError } = this.props;
+    if (prevProps.errorMessage !== errorMessage) {
+      const message = document.getElementsByClassName('error-message');
+      message[0].innerHTML = errorMessage;
+      setTimeout(() => resetError(), 3000);
     }
   }
 
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const { login } = this.props;
+    login(this.state);
+  }
+
   render() {
+    const { email, password } = this.state;
     return (
-      <div className="container-2">
-        <NavbarHome text1="Home" path1="/" text2="Sign Up" path2="/signup" />
-        <LoginForm />
-      </div>
+      <LoginForm
+        email={email}
+        password={password}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }
 
 Login.propTypes = {
-  status: PropTypes.string.isRequired,
-  history: PropTypes.oneOfType([PropTypes.any]).isRequired,
+  login: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  resetError: PropTypes.func.isRequired,
 };
 
-export default Login;
+const mapStateToProps = state => ({
+  errorMessage: state.user.errorMessage,
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: userData => dispatch(LOGIN(userData)),
+  resetError: () => dispatch(RESET_ERROR()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

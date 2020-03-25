@@ -3,7 +3,7 @@ const initialState = {
   user_id: null,
   car_name: '',
   car_id: null,
-  last_appointment: {},
+  appointmentStatus: 'NOT_CREATED',
   appointments: [],
 };
 
@@ -18,10 +18,11 @@ const appointment = (state = initialState, action) => {
     };
     case 'BOOK_APPOINTMENT': return {
       ...state,
-      last_appointment: action.appointment,
+      appointmentStatus: 'CREATED',
     };
     case 'LOAD_APPOINTMENTS': return {
       ...state,
+      appointmentStatus: 'NOT_CREATED',
       appointments: action.payload,
     };
     default: return state;

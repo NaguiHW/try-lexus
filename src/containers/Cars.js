@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { GET_CARS } from '../actions';
+import ShowCars from '../components/ShowCars';
 
 class Cars extends Component {
   constructor(props) {
@@ -33,30 +34,7 @@ class Cars extends Component {
     const { type, handleClick } = this.props;
     const { cars } = this.state;
     return (
-      <div className="content">
-        <div className="selection-head">
-          <div className="title">{type}</div>
-          <div className="subtitle">Please select a Lexus Model</div>
-          <div className="dots" />
-        </div>
-        <div className="selection-content">
-          {
-            cars.map(car => (
-              <div className="car" key={car.id} id={car.id}>
-                <img src={car.image} alt={car.name} onClick={handleClick} role="presentation" />
-                <div className="car-name">{car.name}</div>
-                <div className="dots" />
-                <div className="car-description">{car.description}</div>
-                <div className="social-media-area">
-                  <i className="fab fa-facebook-f" />
-                  <i className="fab fa-twitter" />
-                  <i className="fab fa-instagram" />
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      <ShowCars type={type} cars={cars} handleClick={handleClick} />
     );
   }
 }
