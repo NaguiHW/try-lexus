@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LOGIN, RESET_ERROR } from '../actions';
-import './Login.scss';
+import LoginForm from '../components/LoginForm';
 
 class Login extends Component {
   constructor(props) {
@@ -11,6 +11,8 @@ class Login extends Component {
       email: '',
       password: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -37,16 +39,12 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <>
-        <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
-          <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange.bind(this)} />
-          <br />
-          <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange.bind(this)} />
-          <br />
-          <button type="submit">Log In</button>
-        </form>
-        <div className="error-message" />
-      </>
+      <LoginForm
+        email={email}
+        password={password}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }

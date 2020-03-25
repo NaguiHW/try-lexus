@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Signup from '../components/Signup';
-import Login from '../components/Login';
+import Login from './Login';
 import Navbar from '../components/Navbar';
 import HomeN from '../components/HomeN';
+import Signup from './Signup';
 
 class HomeNotConnected extends Component {
   constructor(props) {
