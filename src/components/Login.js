@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { LOGIN, RESET_ERROR } from '../actions/index';
+import { LOGIN, RESET_ERROR } from '../actions';
+import './Login.scss';
 
-class LoginForm extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +37,7 @@ class LoginForm extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div>
+      <>
         <form className="login-form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange.bind(this)} />
           <br />
@@ -45,12 +46,12 @@ class LoginForm extends Component {
           <button type="submit">Log In</button>
         </form>
         <div className="error-message" />
-      </div>
+      </>
     );
   }
 }
 
-LoginForm.propTypes = {
+Login.propTypes = {
   login: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
   resetError: PropTypes.func.isRequired,
@@ -65,4 +66,5 @@ const mapDispatchToProps = dispatch => ({
   resetError: () => dispatch(RESET_ERROR()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

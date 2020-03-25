@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CREATE_ACCOUNT, RESET_ERROR } from '../actions';
 
-class SignupForm extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +59,7 @@ class SignupForm extends Component {
   }
 }
 
-SignupForm.propTypes = {
+Signup.propTypes = {
   createAccount: PropTypes.func.isRequired,
   errorMessage: PropTypes.string.isRequired,
   resetError: PropTypes.func.isRequired,
@@ -74,4 +74,4 @@ const mapDispatchToProps = dispatch => ({
   resetError: () => dispatch(RESET_ERROR()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

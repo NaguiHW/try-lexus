@@ -1,17 +1,19 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Home from '../containers/Home';
-import Login from '../containers/Login';
-import Signup from '../containers/Signup';
+import PropTypes from 'prop-types';
+import HomeConnected from '../containers/HomeConnected';
+import HomeNotConnected from '../containers/HomeNotConnected';
 import { CHECK_STATUS, LOGOUT } from '../actions';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   constructor() {
     super();
-    this.handleLogot = this.handleLogot.bind(this);
+    this.state = {
+      status: 'NOT_CONNECTED',
+    };
+    this.checkStatus = this.checkStatus.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
@@ -19,28 +21,45 @@ class App extends Component {
     checkStatus();
   }
 
-  handleLogot() {
+  componentDidUpdate(prevProps) {
+    const { status } = this.props;
+    if (prevProps.status !== status) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        status,
+      });
+    }
+  }
+
+  handleLogout() {
     const { logout } = this.props;
     logout();
   }
 
-  render() {
-    const { status } = this.props;
+  checkStatus() {
+    const { status } = this.state;
+    if (status === 'CONNECTED') {
+      return (
+        <HomeConnected handleClick={this.handleLogout} />
+      );
+    }
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/" render={() => <Home status={status} logout={this.handleLogot} />} />
-          <Route path="/login" render={props => <Login {...props} status={status} />} />
-          <Route path="/signup" render={props => <Signup {...props} status={status} />} />
-        </Switch>
-      </Router>
+      <HomeNotConnected />
+    );
+  }
+
+  render() {
+    return (
+      <>
+        {this.checkStatus()}
+      </>
     );
   }
 }
 
 App.propTypes = {
-  status: PropTypes.string.isRequired,
   checkStatus: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
   logout: PropTypes.func.isRequired,
 };
 

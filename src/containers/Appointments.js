@@ -4,30 +4,13 @@ import { connect } from 'react-redux';
 import { LOAD_APPOINTMENTS } from '../actions';
 
 class Appointments extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      appointments: [],
-    };
-  }
-
   componentDidMount() {
-    const { loadAppointments, userID } = this.props;
+    const { userID, loadAppointments } = this.props;
     loadAppointments(userID);
   }
 
-  componentDidUpdate(prevProps) {
-    const { appointments } = this.props;
-    if (prevProps.appointments !== appointments) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        appointments,
-      });
-    }
-  }
-
   render() {
-    const { appointments } = this.state;
+    const { appointments } = this.props;
     return (
       <div className="appointment-page">
         <div className="title">APPOINTMENTS</div>

@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import lexusLogo from '../img/Lexus.svg';
-import './HomeLoggedIn.scss';
 import Cars from '../components/Cars';
 import Car from '../components/Car';
 import AppointmentForm from '../components/AppointmentForm';
-import Appointments from '../components/Appointments';
+import Appointments from './Appointments';
+import './HomeConnected.scss';
 
-class HomeLoggedIn extends Component {
+class HomeConnected extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selection: 'SEDAN',
     };
-    this.content = this.content.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.makeAppointment = this.makeAppointment.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
@@ -109,7 +108,7 @@ class HomeLoggedIn extends Component {
   }
 
   render() {
-    const { logout } = this.props;
+    const { handleClick } = this.props;
     return (
       <div className="container-4">
         <div className="side-menu">
@@ -134,7 +133,7 @@ class HomeLoggedIn extends Component {
               <i className="fab fa-google-plus-g" />
               <i className="fab fa-pinterest-p" />
             </div>
-            <button type="button" onClick={() => logout()}>Log Out</button>
+            <button type="button" onClick={handleClick}>Log Out</button>
           </div>
         </div>
         <div className="">{this.content()}</div>
@@ -143,8 +142,8 @@ class HomeLoggedIn extends Component {
   }
 }
 
-HomeLoggedIn.propTypes = {
-  logout: PropTypes.func.isRequired,
+HomeConnected.propTypes = {
+  handleClick: PropTypes.func.isRequired,
 };
 
-export default HomeLoggedIn;
+export default HomeConnected;

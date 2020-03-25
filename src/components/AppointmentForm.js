@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BOOK_APPOINTMENT, LOAD_APPOINTMENTS } from '../actions';
+import { BOOK_APPOINTMENT } from '../actions';
 
 class AppointmentForm extends Component {
   constructor(props) {
@@ -36,6 +36,13 @@ class AppointmentForm extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    const { appointmentStatus, handleClick } = this.props;
+    if (prevProps.appointmentStatus !== appointmentStatus) {
+      handleClick();
+    }
+  }
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -44,10 +51,8 @@ class AppointmentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { bookAppointment, handleClick } = this.props;
-    // eslint-disable-next-line camelcase
+    const { bookAppointment } = this.props;
     bookAppointment(this.state);
-    handleClick();
   }
 
   render() {
@@ -94,17 +99,18 @@ class AppointmentForm extends Component {
 
 AppointmentForm.propTypes = {
   appointmentData: PropTypes.oneOfType([PropTypes.any]).isRequired,
+  appointmentStatus: PropTypes.string.isRequired,
   bookAppointment: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   appointmentData: state.appointment,
+  appointmentStatus: state.appointment.appointmentStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
   bookAppointment: bookData => dispatch(BOOK_APPOINTMENT(bookData)),
-  loadAppointments: id => dispatch(LOAD_APPOINTMENTS(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentForm);

@@ -32,6 +32,10 @@ export const LOGIN = userData => dispatch => {
     });
 };
 
+export const RESET_ERROR = () => ({
+  type: 'RESET_ERROR',
+});
+
 export const LOGOUT = () => dispatch => {
   Axios.delete('http://localhost:3030/logout', { withCredentials: true })
     .then(response => {
@@ -60,10 +64,6 @@ export const CREATE_ACCOUNT = userData => dispatch => {
       dispatch({ type: 'CREATE_ACCOUNT_ERROR', error });
     });
 };
-
-export const RESET_ERROR = () => ({
-  type: 'RESET_ERROR',
-});
 
 export const GET_CARS = type => dispatch => {
   Axios.get(`http://localhost:3030/cars/${type}`)

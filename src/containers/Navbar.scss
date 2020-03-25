@@ -51,14 +51,12 @@
       list-style: none;
       margin: 25px 0 25px 35px;
       padding: 10px 75px 10px 10px;
-    
-      .nav-link {
-        text-decoration: none;
-        font-size: 25px;
-        color: #262626;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
+      text-decoration: none;
+      font-size: 25px;
+      color: #262626;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
     }
   }
 }
