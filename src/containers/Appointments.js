@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LOAD_APPOINTMENTS } from '../actions';
+import ShowAppointments from '../components/ShowAppointments';
 
 class Appointments extends Component {
   componentDidMount() {
@@ -12,31 +13,7 @@ class Appointments extends Component {
   render() {
     const { appointments } = this.props;
     return (
-      <div className="appointment-page">
-        <div className="title">APPOINTMENTS</div>
-        <div className="dots" />
-        <div className="all-appointments">
-          <div className="row-head">
-            <div>Car Model</div>
-            <div>Date</div>
-            <div>City</div>
-          </div>
-          {
-            appointments.map(appointment => (
-              <div key={appointment.id} className="row">
-                <div className="data">{appointment.car_name}</div>
-                <div className="data">{new Date(appointment.date).toLocaleDateString()}</div>
-                <div className="data">{appointment.city}</div>
-              </div>
-            ))
-          }
-          <div className="message">
-            To book an appointment, select a car and click on
-            {' '}
-            <i>Book an Appointment</i>
-          </div>
-        </div>
-      </div>
+      <ShowAppointments appointments={appointments} />
     );
   }
 }

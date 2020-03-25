@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Cars from '../components/Cars';
-import Car from '../components/Car';
+import Car from './Car';
+import Cars from './Cars';
 import AppointmentForm from '../components/AppointmentForm';
 import Appointments from './Appointments';
 import SideMenu from '../components/SideMenu';
