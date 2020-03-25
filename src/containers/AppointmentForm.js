@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BOOK_APPOINTMENT } from '../actions';
+import ShowAppointmentForm from '../components/ShowAppointmentForm';
 
 class AppointmentForm extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class AppointmentForm extends Component {
       car_name: '',
     };
     this.cities = ['Chorrera', 'Colon', 'David', 'Panama', 'Santiago'];
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -59,40 +62,14 @@ class AppointmentForm extends Component {
     const { appointmentData } = this.props;
     const { date, city } = this.state;
     return (
-      <div className="appointment-form">
-        <div className="book-test">BOOK A LEXUS TEST-DRIVE</div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label htmlFor="name">
-            <span>User Name:</span>
-            <br />
-            <input type="text" disabled value={appointmentData.user_name} id="name" />
-          </label>
-          <br />
-          <label htmlFor="car-name">
-            <span>Selected Car:</span>
-            <br />
-            <input type="text" disabled value={appointmentData.car_name} id="car-name" />
-          </label>
-          <br />
-          <label htmlFor="date">
-            <span>Select a Date:</span>
-            <br />
-            <input type="date" id="date" onChange={this.handleChange.bind(this)} name="date" value={date} />
-          </label>
-          <br />
-          <label htmlFor="city">
-            <span>Select a City:</span>
-            <br />
-            <select id="cities" onChange={this.handleChange.bind(this)} name="city" value={city}>
-              {this.cities.map(city => (
-                <option value={city} key={city}>{city}</option>
-              ))}
-            </select>
-          </label>
-          <br />
-          <button type="submit">Book Now</button>
-        </form>
-      </div>
+      <ShowAppointmentForm
+        date={date}
+        city={city}
+        cities={this.cities}
+        appointmentData={appointmentData}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }

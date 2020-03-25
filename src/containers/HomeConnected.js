@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Car from './Car';
 import Cars from './Cars';
-import AppointmentForm from '../components/AppointmentForm';
+import AppointmentForm from './AppointmentForm';
 import Appointments from './Appointments';
 import SideMenu from '../components/SideMenu';
 
@@ -21,8 +21,8 @@ class HomeConnected extends Component {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  removeClassTo(menu) {
-    const menuList = menu;
+  removeClassTo() {
+    const menuList = document.getElementsByClassName('menu-list')[0];
     for (let i = 0; i < menuList.children.length; i += 1) {
       menuList.children[i].classList.remove('selection');
     }
@@ -77,7 +77,7 @@ class HomeConnected extends Component {
   }
 
   select(e) {
-    this.removeClassTo(e.target.parentElement);
+    this.removeClassTo();
     const item = e.target;
     this.addClassTo(item);
     if (item.innerHTML === 'SEDAN') {
