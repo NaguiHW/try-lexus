@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import HomeConnected from '../containers/HomeConnected';
-import HomeNotConnected from '../containers/HomeNotConnected';
+import HomeConnected from './HomeConnected';
+import HomeNotConnected from './HomeNotConnected';
 import { CHECK_STATUS, LOGOUT } from '../actions';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -40,7 +40,7 @@ class App extends Component {
     const { status } = this.state;
     if (status === 'CONNECTED') {
       return (
-        <HomeConnected handleClick={this.handleLogout} />
+        <HomeConnected logOutAction={this.handleLogout} />
       );
     }
     return (
