@@ -24,7 +24,7 @@ You can clone the project using the following command in your terminal:
 ```
 git clone git@github.com:NaguiHW/try-lexus.git
 ```
-Now, `cd try-lexus/` and before to start install de depencies:
+Now, `cd try-lexus/` and before to start install the depencies:
 ```
 npm install
 ```
